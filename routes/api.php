@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 */
 
-Route::get  ('/libros', [ApiController::class, 'index']);
+Route::get  ('/libros', [BookController::class, 'index']);
 
-Route::post ('/libros', [ApiController::class, 'store']);
+Route::post ('/libros', [BookController::class, 'store']);
 
-Route::delete ('/libros/{id}', [ApiController::class, 'destroy']);
+Route::delete ('/libros/{id}', [BookController::class, 'destroy']);
 
