@@ -9,6 +9,7 @@ class ApiController extends Controller
 {
     public function index() {
         $libros = Book::with('author')->get();
+        //$libros = Book::get(); // No precarga información de autores
         return response()->json($libros);
     }
     public function store (Request $request) {
@@ -27,7 +28,7 @@ class ApiController extends Controller
 
             return response()->json($book,201);
 
-        } catch (\Exception $e){
+        } catch (\Exception $e){    
             return response()->json(['error' => 'Error'], 500);
         }
     }
@@ -38,6 +39,10 @@ class ApiController extends Controller
         if(!$book){
             return response()->json(['message' => 'El libro no está'], 404);
         }
+        else{
+            $book->delete();
+        }
+        return response()->json(['message' => 'Libro eliminado'], 200);
     }
 }
 
