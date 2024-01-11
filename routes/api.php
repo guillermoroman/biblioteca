@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,19 @@ Route::get  ('/libros', [BookController::class, 'index']);
 Route::post ('/libros', [BookController::class, 'store']);
 
 Route::delete ('/libros/{id}', [BookController::class, 'destroy']);
+
+
+Route::post ('/autores', [AuthorController::class, 'store']);
+
+
+
+
+Route::get ('/autores', [AuthorController::class, 'index']);
+
+Route::post ('/autores', [AuthorController::class, 'store']);
+
+Route::delete ('/autores/{id}', [AuthorController::class, 'destroy']);
+
+
+// Implementar métodos para la clase Loan
 

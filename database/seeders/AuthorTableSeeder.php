@@ -13,9 +13,25 @@ class AuthorTableSeeder extends Seeder
      */
     public function run(): void
     {
+
         DB::table('authors') -> insert([
-            'name' => 'Cervantes',
-            'country' => 'España'
+            'name' => 'Brandon Sanderson',
+            'country' => 'USA'
+        ]);
+
+        DB::table('authors') -> insert([
+            'name' => 'Isaac Asimov',
+            'country' => 'USA'
+        ]);
+
+        DB::table('authors') -> insert([
+            'name' => 'Frank Herbert',
+            'country' => 'USA'
+        ]);
+
+        DB::table('authors') -> insert([
+            'name' => 'Nancy Kress',
+            'country' => 'USA'
         ]);
     }
 }

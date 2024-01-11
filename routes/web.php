@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookWebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/libros', [BookWebController::class, 'index']);
+Route::get('/libros/crear', [BookWebController::class, 'create']);
+Route::post('/libros', [BookWebController::class, 'store']);
+Route::delete('/libros/{id}', [BookWebController::class, 'destroy']);

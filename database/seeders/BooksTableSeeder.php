@@ -13,14 +13,41 @@ class BooksTableSeeder extends Seeder
      */
     public function run(): void
     {
+
         DB::table('books') -> insert([
-            'title' => 'El gran Gatsby',
-            'published_year' => 1925
+            'title' => 'The Way of Kings',
+            'published_year' => 2010,
+            'author_id' => 1
         ]);
 
         DB::table('books') -> insert([
-            'title' => 'Cien años de soledad',
-            'published_year' => 1967
+            'title' => 'The Final Empire',
+            'published_year' => 2006,
+            'author_id' => 1
+        ]);
+
+        DB::table('books') -> insert([
+            'title' => 'Words of Radiance',
+            'published_year' => 2014,
+            'author_id' => 1
+        ]);
+
+        DB::table('books') -> insert([
+            'title' => 'Foundation and Empire',
+            'published_year' => 1952,
+            'author_id' => 2
+        ]);
+
+        DB::table('books') -> insert([
+            'title' => 'Dune',
+            'published_year' => 1965,
+            'author_id' => 3
+        ]);
+
+        DB::table('books') -> insert([
+            'title' => 'Beggars in Spain',
+            'published_year' => 1993,
+            'author_id' => 4
         ]);
     }
 }
