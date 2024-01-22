@@ -30,10 +30,6 @@ Route::post ('/libros', [BookController::class, 'store']);
 Route::delete ('/libros/{id}', [BookController::class, 'destroy']);
 
 
-Route::post ('/autores', [AuthorController::class, 'store']);
-
-
-
 
 Route::get ('/autores', [AuthorController::class, 'index']);
 
@@ -42,5 +38,4 @@ Route::post ('/autores', [AuthorController::class, 'store']);
 Route::delete ('/autores/{id}', [AuthorController::class, 'destroy']);
 
 
-// Implementar métodos para la clase Loan
 

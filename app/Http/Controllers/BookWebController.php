@@ -15,15 +15,36 @@ class BookWebController extends Controller
         return view('libros.index', ['libros' => $libros]);
     }
 
+    public function create()
+    {
+        
+        $response = Http::get('http://localhost:8000/api/autores');
+        $authors = $response->json();
+
+        return view('libros.create', compact('authors'));
+
+        //return view('libros.create');
+    }
+
     public function store(Request $request)
     {
-    $response = Http::post('http://localhost:8000/api/libros', [
-        'title' => $request->title,
-        'author_id' => $request->author_id,
-        // otros campos del libro
-    ]);
+        // Validación de los datos del formulario
+        $validatedData = $request->validate([
+            'title' => 'required|string',
+            'author_id' => 'required|integer',
+            'published_year' => 'required|integer'
+        ]);
 
-    return redirect('/libros');
+        // Hacer una solicitud POST a la API para crear el libro
+        $response = Http::post('http://localhost:8000/api/libros', $validatedData);
+
+        if($response->successful()) {
+            // Redirigir a una página adecuada o mostrar un mensaje de éxito
+            return redirect('/libros')->with('success', 'Libro agregado exitosamente');
+        } else {
+            // Manejo de errores si la API falla
+            return back()->withErrors('Error al agregar el libro');
+        }
     }
 
     public function destroy($id)
@@ -31,4 +52,6 @@ class BookWebController extends Controller
         Http::delete("http://localhost:8000/api/libros/{$id}");
         return redirect('/libros');
     }
+
+
 }

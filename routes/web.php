@@ -21,5 +21,6 @@ Route::get('/', function () {
 
 Route::get('/libros', [BookWebController::class, 'index']);
 Route::get('/libros/crear', [BookWebController::class, 'create']);
+
 Route::post('/libros', [BookWebController::class, 'store']);
 Route::delete('/libros/{id}', [BookWebController::class, 'destroy']);
